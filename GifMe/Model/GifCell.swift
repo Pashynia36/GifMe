@@ -15,6 +15,7 @@ class GifCell: UICollectionViewCell {
     
     func prepareCell(myGif: String) {
     
+        myActivity.isHidden = false
         
         let url = URL(string: myGif)
         DispatchQueue.global(qos: .background).async {

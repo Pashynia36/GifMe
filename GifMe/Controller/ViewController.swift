@@ -37,6 +37,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return 0
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     //Populate views   (populate with image)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -57,7 +60,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func decoder() {
         
-        url = firstHalf + textField.text! + secondHalf
+        var newLine = textField.text!
+        if textField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+        } else {
+            newLine = newLine.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        }
+        url = firstHalf + newLine + secondHalf
+        
         if let decodeURL = URL(string: url) {
             Alamofire.request(decodeURL).responseJSON { (response) in
                 do {
