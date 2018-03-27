@@ -53,8 +53,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        decoder()
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField.text!.count >= 2 {
+            decoder()
+        }
         return true
     }
     
@@ -66,7 +73,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             newLine = newLine.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
         }
         url = firstHalf + newLine + secondHalf
-        
         if let decodeURL = URL(string: url) {
             Alamofire.request(decodeURL).responseJSON { (response) in
                 do {

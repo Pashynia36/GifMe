@@ -16,13 +16,22 @@ class GifCell: UICollectionViewCell {
     func prepareCell(myGif: String) {
     
         myActivity.isHidden = false
+        myActivity.startAnimating()
+        // 3 символа и после каждого символа подгрузка
+        // активити индикатор крутится при прокрутке
+        // картинка при подгрузке вылезает анимационно с альфой
         
         let url = URL(string: myGif)
+        imageGif.alpha = 0.0
         DispatchQueue.global(qos: .background).async {
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
                 self.myActivity.isHidden = true
                 self.imageGif.image = UIImage.gif(data: data!)
+                UIView.animate(withDuration: 2.0, animations: {
+                    self.imageGif.alpha = 1.0
+                })
+                
             }
         }
     }
