@@ -10,4 +10,19 @@ import UIKit
 
 class GifCell: UICollectionViewCell {
     
+    @IBOutlet weak var myActivity: UIActivityIndicatorView!
+    @IBOutlet weak var imageGif: UIImageView!
+    
+    func prepareCell(myGif: String) {
+    
+        
+        let url = URL(string: myGif)
+        DispatchQueue.global(qos: .background).async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                self.myActivity.isHidden = true
+                self.imageGif.image = UIImage.gif(data: data!)
+            }
+        }
+    }
 }

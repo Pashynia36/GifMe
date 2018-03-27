@@ -176,7 +176,7 @@ struct HdModel: Decodable {
     let width: String
     let height: String
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -192,7 +192,7 @@ struct FourKModel: Decodable {
     let width: String
     let height: String
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -223,7 +223,7 @@ struct OriginalMp4Model: Decodable {
     let width: String
     let height: String
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -237,7 +237,7 @@ struct OriginalMp4Model: Decodable {
 struct LoopingModel: Decodable {
     
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -253,7 +253,7 @@ struct FixedHeightModel: Decodable {
     let height: String
     let size: String?
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     let webp: String
     let webpSize: String
     
@@ -278,7 +278,7 @@ struct OriginalModel: Decodable {
     let size: String?
     let frames: String
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     let webp: String
     let webpSize: String
     let hash: String?
@@ -331,7 +331,7 @@ struct DownsizedSmallModel: Decodable {
     let width: String
     let height: String
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -349,7 +349,7 @@ struct FixedWidthSmallModel: Decodable {
     let height: String
     let size: String?
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     let webp: String
     let webpSize: String
     
@@ -421,7 +421,7 @@ struct FixedHeightSmallModel: Decodable {
     let height: String
     let size: String?
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     let webp: String
     let webpSize: String
     
@@ -443,7 +443,7 @@ struct PreviewModel: Decodable {
     let width: String
     let height: String
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -489,7 +489,7 @@ struct FixedWidthModel: Decodable {
     let height: String
     let size: String?
     let mp4: String
-    let mp4Size: String
+    let mp4Size: String?
     let webp: String
     let webpSize: String
     

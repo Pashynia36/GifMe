@@ -13,7 +13,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
-    let url: String = "http://api.giphy.com/v1/gifs/search?q=smart+person&api_key=bXfg4xA0G9zOwL9bIe5HMgSIIuzIRw6u"
+    let firstHalf: String = "http://api.giphy.com/v1/gifs/search?q="
+    let secondHalf: String = "&api_key=bXfg4xA0G9zOwL9bIe5HMgSIIuzIRw6u"
+    var url: String = ""
     var gifsWeGot: GifModel?
     
     override func viewDidLoad() {
@@ -29,36 +31,45 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 1
+        if let i = gifsWeGot?.data.count {
+            return i
+        }
+        return 0
     }
     
     //Populate views   (populate with image)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GifCell
+        if let i = gifsWeGot?.data[indexPath.row].images.original.url {
+            cell.prepareCell(myGif: i)
+
+        }
         return cell
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        
+        decoder()
         textField.resignFirstResponder()
         return true
     }
     
     func decoder() {
         
+        url = firstHalf + textField.text! + secondHalf
         if let decodeURL = URL(string: url) {
             Alamofire.request(decodeURL).responseJSON { (response) in
                 do {
                     self.gifsWeGot = try JSONDecoder().decode(GifModel.self, from: response.data!)
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
                 } catch {
                     print("error")
                 }
             }
         }
-        
     }
 }
 
