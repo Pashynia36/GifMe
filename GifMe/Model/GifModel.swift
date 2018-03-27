@@ -64,7 +64,7 @@ struct DatumModel: Decodable {
     let trendingDatetime: String
     let images: ImagesModel
     let title: String
-    let user: UserModel
+    let user: UserModel?
     
     enum CodingKeys: String, CodingKey {
         
@@ -98,26 +98,26 @@ struct ImagesModel: Decodable {
     let fixedWidth: FixedWidthModel
     let fixedHeightSmallStill: FixedHeightSmallStillModel
     let fixedHeightDownsampled: FixedHeightDownsampledModel
-    let preview: PreviewModel
+    let preview: PreviewModel?
     let fixedHeightSmall: FixedHeightSmallModel
     let downsizedStill: DownsizedStillModel
     let downsized: DownsizedModel
     let downsizedLarge : DownsizedLargeModel
     let fixedWidthSmallStill: FixedWidthSmallStillModel
-    let previewWebp: PreviewWebpModel
+    let previewWebp: PreviewWebpModel?
     let fixedWidthStill: FixedWidthStillModel
     let fixedWidthSmall: FixedWidthSmallModel
-    let downsizedSmall: DownsizedSmallModel
+    let downsizedSmall: DownsizedSmallModel?
     let fixedWidthDownsampled: FixedWidthDownsampledModel
     let downsizedMedium: DownsizedMediumModel
     let original: OriginalModel
     let fixedHeight: FixedHeightModel
     let looping: LoopingModel
     let originalMp4: OriginalMp4Model
-    let previewGif: PreviewGifModel
+    let previewGif: PreviewGifModel?
     let fourEightyWStill: FourEightyWStillModel
-    let fourK: FourKModel
-    let hd: HdModel
+    let fourK: FourKModel?
+    let hd: HdModel?
     
     enum CodingKeys: String, CodingKey {
         
@@ -215,7 +215,7 @@ struct PreviewGifModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct OriginalMp4Model: Decodable {
@@ -251,7 +251,7 @@ struct FixedHeightModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
     let mp4: String
     let mp4Size: String
     let webp: String
@@ -275,13 +275,13 @@ struct OriginalModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
     let frames: String
     let mp4: String
     let mp4Size: String
     let webp: String
     let webpSize: String
-    let hash: String
+    let hash: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -303,7 +303,7 @@ struct DownsizedMediumModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct FixedWidthDownsampledModel: Decodable {
@@ -311,7 +311,7 @@ struct FixedWidthDownsampledModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
     let webp: String
     let webpSize: String
     
@@ -347,7 +347,7 @@ struct FixedWidthSmallModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
     let mp4: String
     let mp4Size: String
     let webp: String
@@ -371,7 +371,7 @@ struct FixedWidthStillModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct PreviewWebpModel: Decodable {
@@ -379,7 +379,7 @@ struct PreviewWebpModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct FixedWidthSmallStillModel: Decodable {
@@ -387,7 +387,7 @@ struct FixedWidthSmallStillModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct DownsizedLargeModel: Decodable {
@@ -395,7 +395,7 @@ struct DownsizedLargeModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct DownsizedModel: Decodable {
@@ -403,7 +403,7 @@ struct DownsizedModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct DownsizedStillModel: Decodable {
@@ -411,7 +411,7 @@ struct DownsizedStillModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct FixedHeightSmallModel: Decodable {
@@ -419,7 +419,7 @@ struct FixedHeightSmallModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
     let mp4: String
     let mp4Size: String
     let webp: String
@@ -459,7 +459,7 @@ struct FixedHeightDownsampledModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
     let webp: String
     let webpSize: String
     
@@ -479,7 +479,7 @@ struct FixedHeightSmallStillModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct FixedWidthModel: Decodable {
@@ -487,7 +487,7 @@ struct FixedWidthModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
     let mp4: String
     let mp4Size: String
     let webp: String
@@ -511,7 +511,7 @@ struct OriginalStillModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 struct FixedHeightStillModel: Decodable {
@@ -519,7 +519,7 @@ struct FixedHeightStillModel: Decodable {
     let url: String
     let width: String
     let height: String
-    let size: String
+    let size: String?
 }
 
 

@@ -13,11 +13,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
+    let url: String = "http://api.giphy.com/v1/gifs/search?q=smart+person&api_key=bXfg4xA0G9zOwL9bIe5HMgSIIuzIRw6u"
+    var gifsWeGot: GifModel?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         textField.delegate = self
+        decoder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +45,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         textField.resignFirstResponder()
         return true
+    }
+    
+    func decoder() {
+        
+        if let decodeURL = URL(string: url) {
+            Alamofire.request(decodeURL).responseJSON { (response) in
+                do {
+                    self.gifsWeGot = try JSONDecoder().decode(GifModel.self, from: response.data!)
+                } catch {
+                    print("error")
+                }
+            }
+        }
+        
     }
 }
 
