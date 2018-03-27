@@ -17,17 +17,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let secondHalf: String = "&api_key=bXfg4xA0G9zOwL9bIe5HMgSIIuzIRw6u"
     var url: String = ""
     var gifsWeGot: GifModel?
+    var previous: Int = 0
+    var lastDate = Date()
+    var newDate = Date()
+    var buttonTapped: Bool = false
+    var helloWorldTimer: Timer?
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         textField.delegate = self
-        decoder()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,9 +60,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField.text!.count >= 2 {
-            decoder()
+            
+            if let timer = helloWorldTimer {
+                helloWorldTimer?.invalidate()
+                helloWorldTimer = nil
+                 print("invalidate")
+            }
+            helloWorldTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.checkTime), userInfo: nil, repeats: false)
         }
         return true
+        
+    }
+    
+    @objc func checkTime() {
+        
+        //contidion with time comparison
+        decoder()
+        print("checkTime")
     }
     
     func decoder() {
