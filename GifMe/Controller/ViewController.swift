@@ -17,7 +17,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var helloWorldTimer: Timer?
     var keyBoardSizeHeight: CGFloat = 0.0
     var constantCollectionHeight: CGFloat = 0.0
-    let object = GiffService.self
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -100,7 +99,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @objc func checkTime() {
         
         //contidion with time comparison
-        gifsWeGot = object.decoder(text: textField.text!)
+        let object: GiffService = GiffService(newLine: textField.text!)
+        gifsWeGot = object.decoder()
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
