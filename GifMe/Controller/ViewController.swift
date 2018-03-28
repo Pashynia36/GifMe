@@ -33,7 +33,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         super.viewDidLoad()
         // Setting height of ColView depending on our height of screen
-        constantCollectionHeight = UIScreen.main.bounds.height - textField.frame.size.height
+        constantCollectionHeight = UIScreen.main.bounds.height - ( textField.frame.size.height + 30 )
         collectionHeight.constant = constantCollectionHeight
         textField.delegate = self
     }
