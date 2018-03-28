@@ -17,6 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var helloWorldTimer: Timer?
     var keyBoardSizeHeight: CGFloat = 0.0
     var constantCollectionHeight: CGFloat = 0.0
+    let object: GiffService = GiffService()
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -58,7 +59,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        // We return height of CollView to regular
+        // We return height of CollectionView to regular
         UIView.animate(withDuration: 1.0, animations: {
             self.collectionHeight.constant = self.constantCollectionHeight
             textField.resignFirstResponder()
@@ -74,7 +75,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if let _ = helloWorldTimer {
                 helloWorldTimer?.invalidate()
                 helloWorldTimer = nil
-                 print("invalidate")
             }
             helloWorldTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.checkTime), userInfo: nil, repeats: false)
         }
@@ -98,15 +98,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @objc func checkTime() {
         
-        //contidion with time comparison
-        let object: GiffService = GiffService(newLine: textField.text!)
-        gifsWeGot = object.decoder()
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-        print("checkTime")
+        object.decoder(nexLine: textField.text!, myClos)
     }
     
-    
+    func myClos(model: GifModel) {
+        
+        self.gifsWeGot = model
+        self.collectionView.reloadData()
+    }
 }
-

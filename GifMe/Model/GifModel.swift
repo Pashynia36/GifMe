@@ -521,6 +521,3 @@ struct FixedHeightStillModel: Decodable {
     let height: String
     let size: String?
 }
-
-
-
