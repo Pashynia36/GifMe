@@ -22,7 +22,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var keyBoardSizeHeight: CGFloat = 0.0
     var constantCollectionHeight: CGFloat = 0.0
     
-    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)

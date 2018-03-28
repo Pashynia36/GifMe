@@ -23,7 +23,7 @@ class GifCell: UICollectionViewCell {
         imageGif.sd_setImage(with: URL(string: myGif))
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {
-                UIView.animate(withDuration: 1.5, animations: {
+                UIView.animate(withDuration: 2.0, animations: {
                     self.imageGif.alpha = 1.0
                 })
             }

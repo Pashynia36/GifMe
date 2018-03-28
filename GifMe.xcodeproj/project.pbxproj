@@ -15,7 +15,6 @@
 		4E2C1BEE206A39C20027218E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4E2C1BED206A39C20027218E /* Podfile */; };
 		4EF725E1206A3AEF006BFCED /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF725E0206A3AEF006BFCED /* GifCell.swift */; };
 		4EF725E7206A3BFF006BFCED /* GifModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF725E6206A3BFF006BFCED /* GifModel.swift */; };
-		4EF725EB206A62B1006BFCED /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF725EA206A62B1006BFCED /* UIImage+Gif.swift */; };
 		9AF5A367FB80DAC67064FFE1 /* Pods_GifMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D05DEB33843BB0EC7FC1D8 /* Pods_GifMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		4E2C1BED206A39C20027218E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4EF725E0206A3AEF006BFCED /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		4EF725E6206A3BFF006BFCED /* GifModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifModel.swift; sourceTree = "<group>"; };
-		4EF725EA206A62B1006BFCED /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+Gif.swift"; path = "GifMe/Model/UIImage+Gif.swift"; sourceTree = SOURCE_ROOT; };
 		93D05DEB33843BB0EC7FC1D8 /* Pods_GifMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GifMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,7 +117,6 @@
 			children = (
 				4EF725E0206A3AEF006BFCED /* GifCell.swift */,
 				4EF725E6206A3BFF006BFCED /* GifModel.swift */,
-				4EF725EA206A62B1006BFCED /* UIImage+Gif.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,7 +266,6 @@
 				4EF725E7206A3BFF006BFCED /* GifModel.swift in Sources */,
 				4E2C1BDE206A35090027218E /* ViewController.swift in Sources */,
 				4E2C1BDC206A35090027218E /* AppDelegate.swift in Sources */,
-				4EF725EB206A62B1006BFCED /* UIImage+Gif.swift in Sources */,
 				4EF725E1206A3AEF006BFCED /* GifCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
