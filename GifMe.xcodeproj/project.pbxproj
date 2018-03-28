@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E1CE71B206BA2450095A4D4 /* GiffService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CE71A206BA2450095A4D4 /* GiffService.swift */; };
 		4E2C1BDC206A35090027218E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C1BDB206A35090027218E /* AppDelegate.swift */; };
 		4E2C1BDE206A35090027218E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2C1BDD206A35090027218E /* ViewController.swift */; };
 		4E2C1BE1206A35090027218E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E2C1BDF206A35090027218E /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		2C4B6FCC94ECB76929F7EB09 /* Pods-GifMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-GifMe/Pods-GifMe.release.xcconfig"; sourceTree = "<group>"; };
 		398CA7A57AAC3A6556FB490A /* Pods-GifMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GifMe/Pods-GifMe.debug.xcconfig"; sourceTree = "<group>"; };
+		4E1CE71A206BA2450095A4D4 /* GiffService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiffService.swift; sourceTree = "<group>"; };
 		4E2C1BD8206A35090027218E /* GifMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E2C1BDB206A35090027218E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E2C1BDD206A35090027218E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				4EF725E5206A3BC0006BFCED /* Model */,
 				4EF725E2206A3B9C006BFCED /* Supporting Files */,
 				4E2C1BE7206A35090027218E /* Info.plist */,
+				4E1CE71A206BA2450095A4D4 /* GiffService.swift */,
 			);
 			path = GifMe;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF725E7206A3BFF006BFCED /* GifModel.swift in Sources */,
+				4E1CE71B206BA2450095A4D4 /* GiffService.swift in Sources */,
 				4E2C1BDE206A35090027218E /* ViewController.swift in Sources */,
 				4E2C1BDC206A35090027218E /* AppDelegate.swift in Sources */,
 				4EF725E1206A3AEF006BFCED /* GifCell.swift in Sources */,

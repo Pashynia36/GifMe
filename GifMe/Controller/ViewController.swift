@@ -7,20 +7,17 @@
 //  API Key: bXfg4xA0G9zOwL9bIe5HMgSIIuzIRw6u
 
 import UIKit
-import Alamofire
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
-    let firstHalf: String = "http://api.giphy.com/v1/gifs/search?q="
-    let secondHalf: String = "&api_key=bXfg4xA0G9zOwL9bIe5HMgSIIuzIRw6u"
-    var url: String = ""
     var gifsWeGot: GifModel?
     var helloWorldTimer: Timer?
     var keyBoardSizeHeight: CGFloat = 0.0
     var constantCollectionHeight: CGFloat = 0.0
+    let object = GiffService.self
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -63,8 +60,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         // We return height of CollView to regular
-        collectionHeight.constant = constantCollectionHeight
-        textField.resignFirstResponder()
+        UIView.animate(withDuration: 1.0, animations: {
+            self.collectionHeight.constant = self.constantCollectionHeight
+            textField.resignFirstResponder()
+        })
+        
         return true
     }
     
@@ -100,30 +100,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @objc func checkTime() {
         
         //contidion with time comparison
-        decoder()
+        gifsWeGot = object.decoder(text: textField.text!)
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
         print("checkTime")
     }
     
-    func decoder() {
-        
-        var newLine = textField.text!
-        if textField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
-        } else {
-            newLine = newLine.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
-        }
-        url = firstHalf + newLine + secondHalf
-        if let decodeURL = URL(string: url) {
-            Alamofire.request(decodeURL).responseJSON { (response) in
-                do {
-                    self.gifsWeGot = try JSONDecoder().decode(GifModel.self, from: response.data!)
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
-                } catch {
-                    print("error")
-                }
-            }
-        }
-    }
+    
 }
 

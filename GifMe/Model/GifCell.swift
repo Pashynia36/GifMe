@@ -20,12 +20,13 @@ class GifCell: UICollectionViewCell {
         myActivity.isHidden = false
         myActivity.startAnimating()
         imageGif.alpha = 0.0
-        imageGif.sd_setImage(with: URL(string: myGif))
         DispatchQueue.global(qos: .background).async {
+            self.imageGif.sd_setImage(with: URL(string: myGif))
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 2.0, animations: {
                     self.imageGif.alpha = 1.0
                 })
+                //self.myActivity.isHidden = true
             }
         }
     }
