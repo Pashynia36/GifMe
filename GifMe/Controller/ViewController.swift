@@ -11,26 +11,35 @@ import Alamofire
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
 
+    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     let firstHalf: String = "http://api.giphy.com/v1/gifs/search?q="
     let secondHalf: String = "&api_key=bXfg4xA0G9zOwL9bIe5HMgSIIuzIRw6u"
     var url: String = ""
     var gifsWeGot: GifModel?
-    var previous: Int = 0
-    var lastDate = Date()
-    var newDate = Date()
-    var buttonTapped: Bool = false
     var helloWorldTimer: Timer?
+    var keyBoardSizeHeight: CGFloat = 0.0
+    var constantCollectionHeight: CGFloat = 0.0
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        // Setting height of ColView depending on our height of screen
+        constantCollectionHeight = UIScreen.main.bounds.height - textField.frame.size.height
+        collectionHeight.constant = constantCollectionHeight
         textField.delegate = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if let i = gifsWeGot?.data.count {
             return i
         }
@@ -38,9 +47,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
         return 1
     }
-    //Populate views   (populate with image)
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GifCell
@@ -53,6 +63,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        // We return height of CollView to regular
+        collectionHeight.constant = constantCollectionHeight
         textField.resignFirstResponder()
         return true
     }
@@ -61,7 +73,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if textField.text!.count >= 2 {
             
-            if let timer = helloWorldTimer {
+            if let _ = helloWorldTimer {
                 helloWorldTimer?.invalidate()
                 helloWorldTimer = nil
                  print("invalidate")
@@ -70,6 +82,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         return true
         
+    }
+    
+    //MARK:- keyBoard show
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            // Taking keyboard's size, that appeared first(first appearing has bigger height)
+            if keyBoardSizeHeight == 0.0 {
+                keyBoardSizeHeight = keyboardSize.height
+            }
+            // Check if CollView's height is actual size
+            if collectionHeight.constant == constantCollectionHeight {
+                collectionHeight.constant = UIScreen.main.bounds.height - ( keyBoardSizeHeight + textField.frame.size.height + 30)
+            }
+        }
     }
     
     @objc func checkTime() {

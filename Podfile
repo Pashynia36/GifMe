@@ -5,4 +5,5 @@ use_frameworks!
 target 'GifMe' do
 pod 'Alamofire', '~> 4.7'
 pod 'SDWebImage', '~> 4.0'
+pod 'SDWebImage/GIF'
 end
