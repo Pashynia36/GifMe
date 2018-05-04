@@ -26,7 +26,6 @@ class GifCell: UICollectionViewCell {
                 UIView.animate(withDuration: 2.0, animations: {
                     self.imageGif.alpha = 1.0
                 })
-                //self.myActivity.isHidden = true
             }
         }
     }

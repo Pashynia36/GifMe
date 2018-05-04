@@ -36,10 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if let i = gifsWeGot?.data.count {
-            return i
-        }
-        return 0
+        return gifsWeGot?.data.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
