@@ -19,8 +19,8 @@ class GiffService {
     func decoder(nexLine: String, _ callBack: @escaping (_ model: GifModel) -> Void ) -> Void {
         
         var newLine = nexLine
-        if newLine.trimmingCharacters(in: .whitespaces).isEmpty {
-        } else {
+        // If there's(yes "there's", I'm american) more than 2 words, then clue them for URL
+        if !newLine.trimmingCharacters(in: .whitespaces).isEmpty {
             newLine = newLine.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
         }
         url = firstHalf + newLine + secondHalf
